@@ -1,0 +1,34 @@
+type Category {
+    id: ID!
+    name: String!
+    description: String!
+    movies: [Movie!]!
+}
+type Movie {
+    id: ID!
+    title: String!
+    description: String!
+    releaseDate: String!
+    categories: [Category!]!
+}
+
+input NewCategory {
+    name: String!
+    description: String!
+}
+input NewMovie {
+    title: String!
+    description: String!
+    releaseDate: String!
+    categoryId: [ID!]!
+}
+
+type Query {
+    categories: [Category!]!
+    movies: [Movie!]!
+}
+
+type Mutation {
+    createCategory(input: NewCategory!): Category!
+    createMovie(input: NewMovie!): Movie!
+}
